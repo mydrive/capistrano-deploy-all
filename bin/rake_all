@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require_relative "deployment"
+include Deployment
+
+if deployments.any?
+  puts "What is the name of the Rake task you want to run?"
+  task = gets.strip
+
+  puts "Rake task to be ran against: #{deployments.join(", ")}"
+  puts "Are you sure? (Y/n): "
+  response = gets.strip
+  if response.empty? || response.downcase == "y"
+    succeeded = []
+    deployments.each do |deployment|
+      if system("#{File.join("bin", "cap")} #{deployment} invoke:rake task=#{task}")
+        succeeded << deployment
+      else
+        puts "FAILED running against #{deployment}"
+        break
+      end
+      puts "Successfully ran against #{succeeded.join(", ")}" if succeeded.any?
+    end
+  else
+    puts "Aborted."
+  end
+end

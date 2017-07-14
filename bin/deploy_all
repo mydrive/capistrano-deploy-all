@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require_relative "deployment"
+include Deployment
+
+if deployments.any?
+  puts "Project to be deployed to: #{deployments.join(", ")}"
+  puts "Are you sure? (Y/n): "
+  response = gets.strip
+  if response.empty? || response.downcase == "y"
+    succeeded = []
+    deployments.each do |deployment|
+      if system("#{File.join("bin", "cap")} #{deployment} deploy")
+        succeeded << deployment
+      else
+        puts "FAILED deploying to #{deployment}"
+        break
+      end
+      puts "Successfully deployed to #{succeeded.join(", ")}" if succeeded.any?
+    end
+  else
+    puts "Aborted."
+  end
+end
