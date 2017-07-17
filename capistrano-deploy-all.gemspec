@@ -5,7 +5,7 @@ Gem::Specification.new do |spec|
   spec.summary     = "Deploy a service or run a Rake task against all environments"
   spec.description = "Deploy a service or run a Rake task against all environments using Capistrano. The environments are going to be read based on the /config/deploy/*.rb files"
   spec.author      = "Arturo Herrero"
-  spec.email       = "arturo.herrero@mydrivesolutions.com"
+  spec.email       = "arturo.herrero@gmail.com"
   spec.homepage    = "https://github.com/mydrive/capistrano-deploy-all"
   spec.license     = "BSD 2-clause"
 
