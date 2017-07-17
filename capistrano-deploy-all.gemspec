@@ -13,4 +13,6 @@ Gem::Specification.new do |spec|
 
   spec.files       = Dir["{bin,lib}/**/*", "README.md"]
   spec.executables = ["deploy_all", "rake_all"]
+
+  spec.add_dependency "capistrano"
 end
