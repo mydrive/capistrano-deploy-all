@@ -13,7 +13,7 @@ if deployments.any?
   if response.empty? || response.downcase == "y"
     succeeded = []
     deployments.each do |deployment|
-      if system("#{File.join("bin", "cap")} #{deployment} invoke:rake task=#{task}")
+      if system("#{File.join("bin", "cap")} #{deployment} invoke:rake task='#{task}'")
         succeeded << deployment
       else
         puts "FAILED running against #{deployment}"
