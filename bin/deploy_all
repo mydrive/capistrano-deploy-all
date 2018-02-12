@@ -10,16 +10,12 @@ if deployments.any?
   if response.empty? || response.downcase == "y"
     succeeded = []
     deployments.each do |deployment|
-      puts "===>"
-      puts "#{File.join("bin", "cap")} #{deployment} deploy"
-=begin
       if system("#{File.join("bin", "cap")} #{deployment} deploy")
         succeeded << deployment
       else
         puts "FAILED deploying to #{deployment}"
         break
       end
-=end
       puts "Successfully deployed to #{succeeded.join(", ")}" if succeeded.any?
     end
   else
