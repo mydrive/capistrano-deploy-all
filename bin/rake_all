@@ -3,22 +3,27 @@
 require_relative "deployment"
 include Deployment
 
-if deployments.any?
+deployment_list =  deployments - exclude_list
+if deployment_list.any?
   puts "What is the name of the Rake task you want to run?"
   task = gets.strip
 
-  puts "Rake task to be ran against: #{deployments.join(", ")}"
+  puts "Rake task to be ran against: #{deployment_list.join(", ")}"
   puts "Are you sure? (Y/n): "
   response = gets.strip
   if response.empty? || response.downcase == "y"
     succeeded = []
-    deployments.each do |deployment|
+    deployment_list.each do |deployment|
+      puts "==>"
+      puts "#{File.join("bin", "cap")} #{deployment} invoke:rake task='#{task}'"
+=begin
       if system("#{File.join("bin", "cap")} #{deployment} invoke:rake task='#{task}'")
         succeeded << deployment
       else
         puts "FAILED running against #{deployment}"
         break
       end
+=end
       puts "Successfully ran against #{succeeded.join(", ")}" if succeeded.any?
     end
   else
