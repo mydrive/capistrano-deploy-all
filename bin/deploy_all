@@ -3,14 +3,13 @@
 require_relative "deployment"
 include Deployment
 
-deployment_list =  deployments - exclude_list
-if deployment_list.any?
-  puts "Project to be deployed to: #{deployment_list.join(", ")}"
+if deployments.any?
+  puts "Project to be deployed to: #{deployments.join(", ")}"
   puts "Are you sure? (Y/n): "
   response = gets.strip
   if response.empty? || response.downcase == "y"
     succeeded = []
-    deployment_list.each do |deployment|
+    deployments.each do |deployment|
       puts "===>"
       puts "#{File.join("bin", "cap")} #{deployment} deploy"
 =begin
