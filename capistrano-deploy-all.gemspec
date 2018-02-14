@@ -1,7 +1,7 @@
 Gem::Specification.new do |spec|
   spec.platform    = Gem::Platform::RUBY
   spec.name        = "capistrano-deploy-all"
-  spec.version     = "0.1.4"
+  spec.version     = "0.2.0"
   spec.summary     = "Deploy a service or run a Rake task against all environments"
   spec.description = "Deploy a service or run a Rake task against all environments using Capistrano. The environments are going to be read based on the /config/deploy/*.rb files"
   spec.author      = "Arturo Herrero"
