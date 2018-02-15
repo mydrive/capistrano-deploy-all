@@ -38,3 +38,7 @@ bundle binstubs capistrano-deploy-all
 This provides the executables in the `bin` directory of the project:
 - `bin/deploy_all`
 - `bin/rake_all`
+
+## Exclude an environment
+You can exclude one or multiple environments by adding them to a file called `exclude_list` in `/config/deploy/` folder.
+Each environment should be in a separate line.
