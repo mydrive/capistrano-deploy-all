@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.author      = "Arturo Herrero"
   spec.email       = "arturo.herrero@gmail.com"
   spec.homepage    = "https://github.com/mydrive/capistrano-deploy-all"
-  spec.license     = "BSD 2-clause"
+  spec.license     = "BSD-2-Clause"
 
   spec.required_ruby_version = ">= 2.2.0"
 
